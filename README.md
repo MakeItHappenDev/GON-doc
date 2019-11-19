@@ -60,13 +60,14 @@ The JSON5 Data Interchange Format (JSON5) is a superset of JSON that aims to all
   singleQuotes: 'I can use "double quotes" here',
   lineBreaks: "Look, Mom! \
 No \\n's!",
-  backquoted:`Hello the
-  futur`,
+  backquoted:`Hello from the
+futur`,
   hexadecimal: 0xdecaf,
   leadingDecimalPoint: .8675309, andTrailing: 8675309.,
   bigNumber: 321543123n,
   positiveSign: +1,
   date: @2019-11-18T19:41:02.095Z@,
+  aReference:$unquoted,
   map:#{
       $date$:'The date',
       'bigNumber':'new type'
