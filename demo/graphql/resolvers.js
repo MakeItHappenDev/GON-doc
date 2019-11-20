@@ -1,4 +1,4 @@
-import data from './nest'
+import data from './graph'
 
 const root = { 
   hello: () => "Hello Boys",

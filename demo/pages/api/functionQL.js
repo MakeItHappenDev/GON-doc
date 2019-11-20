@@ -1,7 +1,7 @@
 import { graphql, buildSchema } from "graphql";
 
 import schema from '../../graphql/schema'
-import resolvers from '../../graphql/resolvers'
+import resolvers from '../../graphql/resolversFunction'
 
 const buildedSchema = buildSchema(schema)
 

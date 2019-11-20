@@ -3,7 +3,7 @@ import data from '../../graphql/graph'
 export default async (req, res) => {
 
 
-const tweets = data.tweets
+/*const tweets = data.tweets
 const json = {data:{tweets:[],authors:[]},refs:{tweetsById:{},authorsById:{}}}
 
   data.authors.forEach(author => {
@@ -15,7 +15,11 @@ const json = {data:{tweets:[],authors:[]},refs:{tweetsById:{},authorsById:{}}}
     json.refs.tweetsById[tweet.id] = tweet
     json.data.tweets.push(`$refs.tweetsById.${tweet.id}`)
     tweet.author = `refs.authorsById.${tweet.author.id}`
-  });
-
-  return res.json(json);
+  }); */
+try{
+    return res.json(data);
+}
+catch(e){
+    return res.end(e.toString())
+}
 };
