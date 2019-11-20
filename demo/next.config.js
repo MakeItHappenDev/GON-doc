@@ -1,10 +1,11 @@
-module.exports = {
-  webpack: config => {
-    // Fixes npm packages that depend on `fs` module
-    config.node = {
-      fs: 'empty'
-    }
+const withCSS = require("@zeit/next-css");
+const withSass = require('@zeit/next-sass')
 
-    return config
+
+module.exports =  withCSS(withSass({
+  cssModules: true,
+  env: {
+    GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+    MONGODB: process.env.MONGODB
   }
-}
+}))

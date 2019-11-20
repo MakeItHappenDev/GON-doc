@@ -1,0 +1,15 @@
+.nav {
+    display:flex;
+    > p {
+        padding:1rem;
+        margin:0;
+        flex:1 1 auto;
+        border:1px solid #303030;
+        border-right:none;
+        cursor:pointer;
+    }
+    > .selected {
+        background-color:#303030;
+        color:white
+    }
+}
