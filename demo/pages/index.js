@@ -22,6 +22,7 @@ const Home = () => {
   return (
     <main>
      <h1>Graph Object Notation demo</h1>
+     <p><a href="https://github.com/MakeItHappenDev/GraphObjectNotation" target="_blank" rel="noopener noreferrer">Link to the source code</a></p>
      <nav className={styles.nav}>
        <p className={endpoint==="functionQL"?styles.selected:null} onClick={()=>setEndpoint('functionQL')}>functionQL</p>
        <p className={endpoint==="treeQL"?styles.selected:null} onClick={()=>setEndpoint('treeQL')}>treeQL</p>
