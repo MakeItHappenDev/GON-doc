@@ -1,0 +1,24 @@
+{
+  "name": "create-next-example-app",
+  "description": "A Next.js starter app.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeit/now-examples/tree/master/nextjs"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.19.0",
+    "graphql": "^14.5.8",
+    "next": "^9.1.1",
+    "node-sass": "^4.13.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}
