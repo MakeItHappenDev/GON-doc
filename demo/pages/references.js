@@ -1,5 +1,7 @@
 import setup from '../lib/references'
 
+import styles from './references.module.scss'
+
 export default () => {
 
   const user1 = {name:"Arthur"}
@@ -35,7 +37,7 @@ export default () => {
 
 
   return (
-    <main>
+    <main className={styles.main}>
       <h1>Hello dev.to</h1>
       <pre>{`const user1 = {name:"Arthur"}
 const user2 = {name:"Bob"}
