@@ -26,7 +26,7 @@ export default () => {
   const init = setup({
     references: preloadedRefs,
     addressLength:8,
-    target:"usedReferences"
+    path:["usedReferences"]
     })
   const findRef = init("objects")
   const data = {
@@ -61,7 +61,7 @@ const preloadedRefs = {
 const init = setup({
   references: preloadedRefs,
   addressLength:8,
-  target:"usedReferences"
+  path:["usedReferences"]
   })
 const findRef = init("objects")
 const data = {

@@ -1,5 +1,7 @@
+import Reference from './reference'
+
 const setup = (options) => {
-  const {references = {},addressLength = 8,target = "references"} = options
+  const {references = {},addressLength = 8,path = ["references"]} = options
 
   //Import refs
   let knownObjects = new Map()
@@ -32,10 +34,8 @@ const setup = (options) => {
       //Generate from usedObjects
       const usedRefs = {}
       const entries = usedObjects.entries()
-      let active = entries.next()
-      while(!active.done){
+      for(let active = entries.next();active.done != true;active = entries.next()){
         usedRefs[active.value[1]] = active.value[0]
-        active = entries.next()
       }
       return usedRefs
     }
@@ -43,10 +43,9 @@ const setup = (options) => {
       //Generate from usedObjects
       const usedRefs = refs
       const entries = usedObjects.entries()
-      let active = entries.next()
-      while(!active.done){
+
+      for(let active = entries.next();active.done != true;active = entries.next()){
         usedRefs[active.value[1]] = active.value[0]
-        active = entries.next()
       }
       return usedRefs
     }
@@ -69,7 +68,7 @@ const setup = (options) => {
           }
           usedObjects.set(object,address)
         }
-        return `$${target}.${address}`
+        return new Reference(address,path)
       }
     }
   }
