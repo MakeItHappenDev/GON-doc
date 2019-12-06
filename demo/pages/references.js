@@ -17,8 +17,7 @@ export default () => {
 
   const preloadedRefs = {
     superUser:user1,
-    bannedUser:user2,
-    notUsed:{name:"Alice"}
+    notUsed:user2
     }
 
 
@@ -58,8 +57,7 @@ const people = [
 
 const preloadedRefs = {
   superUser:user1,
-  bannedUser:user2,
-  notUsed:{name:"Alice"}
+  notUsed:user2
   }
 
 

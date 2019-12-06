@@ -33,21 +33,13 @@ const setup = (options) => {
     else if(type === "references"){
       //Generate from usedObjects
       const usedRefs = {}
-      const entries = usedObjects.entries()
-      for(let active = entries.next();active.done != true;active = entries.next()){
-        usedRefs[active.value[1]] = active.value[0]
+      for(let [value,key] of usedObjects){
+        usedRefs[key] = value
       }
       return usedRefs
     }
     else if(type === "allReferences"){
-      //Generate from usedObjects
-      const usedRefs = refs
-      const entries = usedObjects.entries()
-
-      for(let active = entries.next();active.done != true;active = entries.next()){
-        usedRefs[active.value[1]] = active.value[0]
-      }
-      return usedRefs
+      return refs
     }
     else{
       return object => {
@@ -66,6 +58,8 @@ const setup = (options) => {
             do{ address = generate.next().value }
             while(refs[address] !== undefined)
           }
+          //build the refs
+          refs[address] = object
           usedObjects.set(object,address)
         }
         return new Reference(address,path)
