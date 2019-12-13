@@ -1,13 +1,14 @@
-function Reference(target,path = ["references"]){
+function Reference2(target,path = ["references"]){
   this.target = target
   this.path = path
   this.toJSON = () => {
-    return `$ref:${this.path.join('.')}.${this.target}`
-  }
+    return '@@@@'+this.path + '/' + this.target
+    //return `@${this.path.join('.')}.${this.target}@`
+  } 
   this.toGON = () => {
     return `$${this.path.join('.')}.${this.target}`
   }
 }
 //Reference.prototype.toJSON = 
 
-export default Reference
+export default Reference2

@@ -1,4 +1,4 @@
-import Reference from './reference'
+import Reference2 from './reference'
 
 const setup = (options) => {
   const {references = {},addressLength = 8,path = ["references"]} = options
@@ -62,7 +62,7 @@ const setup = (options) => {
           refs[address] = object
           usedObjects.set(object,address)
         }
-        return new Reference(address,path)
+        return new Reference2(address,path)
       }
     }
   }
