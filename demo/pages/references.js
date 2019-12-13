@@ -4,8 +4,6 @@ import parse from '../lib/parse'
 
 import styles from './references.module.scss'
 
-import dataG from '../../demo/graphql/graph'
-
 
 export default () => {
 
