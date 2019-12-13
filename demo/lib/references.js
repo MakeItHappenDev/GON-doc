@@ -1,7 +1,7 @@
-import Reference2 from './reference'
+import Reference from './reference'
 
 const setup = (options) => {
-  const {references = {},addressLength = 8,path = ["references"]} = options
+  const {references = {},path = ["references"]} = options
 
   //Import refs
   let knownObjects = new Map()
@@ -17,13 +17,12 @@ const setup = (options) => {
 
 
   //Create functionnal generator
-  const generator = function* (length = 8){
-    while(true){
-      const random = Math.random().toString(16).slice(2,2+length)
-      yield `0x${random}`
+  const generator = function* (start = 61440){
+    for(let i = start;i<Infinity;i++){
+      yield `0x${i.toString(16)}`
     }
   }
-  const generate = generator(addressLength)
+  const generate = generator(61440)
 
   //Type of expected return
   return (type = "object") => {
@@ -62,7 +61,7 @@ const setup = (options) => {
           refs[address] = object
           usedObjects.set(object,address)
         }
-        return new Reference2(address,path)
+        return new Reference([...path,address])
       }
     }
   }

@@ -1,16 +1,6 @@
-const findPath = (current, path) => {
-  path.forEach(p => {
-    current = current[p];
-  });
-  return current;
-};
+import Reference from './reference'
 
-function Reference(path = []) {
-  this.path = path;
-  this.getValue = object => {
-    return findPath(object, this.path);
-  };
-}
+
 
 /* Need to optimize this one, there must be a way to accelerate
 
@@ -28,12 +18,10 @@ function parse(str) {
 
 const reReference = (object, bank = object) => {
   if (object instanceof Array) {
-    console.log("I'm in an array!", object);
     for (let i = 0; i < object.length; i++) {
       //Don't go recursive for primitives
       if (typeof object[i] === "object") {
         if (object[i] instanceof Reference) {
-          console.log(object[i], object[i].getValue(object));
           object[i] = object[i].getValue(bank);
         } else {
           reReference(object[i], bank);
@@ -41,7 +29,6 @@ const reReference = (object, bank = object) => {
       }
     }
   } else if (object instanceof Object) {
-    console.log("i'm in an object", object);
     Object.keys(object).forEach(function(key) {
       if (object[key] && typeof object[key] === "object") {
         if (object[key] instanceof Reference) {

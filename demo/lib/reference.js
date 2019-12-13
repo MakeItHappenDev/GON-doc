@@ -1,13 +1,20 @@
-function Reference2(target,path = ["references"]){
-  this.target = target
-  this.path = path
+function Reference(path = []) {
+  this.path = path;
+  this.getValue = object => {
+    return findPath(object, this.path);
+  };
   this.toJSON = () => {
-    return '@@@@'+this.path + '/' + this.target
-    //return `@${this.path.join('.')}.${this.target}@`
-  } 
-  this.toGON = () => {
-    return `$${this.path.join('.')}.${this.target}`
-  }
+    return `@${this.path.join('.')}@`
+  };
 }
 
-export default Reference2
+const findPath = (current, path) => {
+  path.forEach(p => {
+    current = current[p];
+  });
+  return current;
+};
+
+
+
+export default Reference

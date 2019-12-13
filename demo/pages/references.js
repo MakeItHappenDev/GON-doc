@@ -1,49 +1,19 @@
+import Reference from '../lib/reference'
 import setup from '../lib/references'
 import parse from '../lib/parse'
 
 import styles from './references.module.scss'
 
 
-/*
-
-const app = document.querySelector("#app");
-const gon = document.querySelector("#gon");
-const string =
-  '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @"foo"@],"ref":@"foo"@, "refList":@"list"@}';
-
-const data = parse(string);
-gon.innerHTML = string.toString();
-app.innerHTML = JSON.stringify(data);
-
-*/
-
-
 
 export default () => {
 
-  const string = '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @"foo"@],"ref":@"foo"@, "refList":@"list"@}'
+  const string = '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @"foo"."name"@],"ref":@"foo"@, "refList":@"list"@,"fakeRef":{"name":"Arthur"}}'
   const parsedString = parse(string)
   const JSONString = JSON.stringify(parsedString)
-  /* const user1 = {name:"Arthur"}
-  const user2 = {name:"Bob"}
 
-  const people = [
-    user1,
-    {name:"Arthur"},
-    {name:"Catherine"},
-    {name:"Joe"},
-    user1
-    ]
-
-  const preloadedRefs = {
-    superUser:user1,
-    notUsed:user2
-    }
-
- */
   //Execute the referencification
   const init = setup({
-    addressLength:8,
     path:["usedReferences"]
     })
   const findRef = init("objects")
@@ -53,16 +23,15 @@ export default () => {
     if (object instanceof Array) {
       for (let i = 0; i < object.length; i++) {
         //Don't go recursive for primitives
-        if (typeof object[i] === "object" && object[i] !== null) {
+        if (typeof object[i] === "object" && object[i] !== null && !(object[i] instanceof Reference)) {
           //Go deeper
           reference(object[i])
           object[i] = findRef(object[i])
         }
       }
     } else if (object instanceof Object) {
-
       Object.keys(object).forEach(function(key) {
-        if (object[key] && typeof object[key] === "object") {
+        if (object[key] && typeof object[key] === "object" && !(object[key] instanceof Reference)) {
           //Go deeper
           reference(object[key])
           object[key] = findRef(object[key])
