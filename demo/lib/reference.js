@@ -9,6 +9,5 @@ function Reference2(target,path = ["references"]){
     return `$${this.path.join('.')}.${this.target}`
   }
 }
-//Reference.prototype.toJSON = 
 
 export default Reference2
