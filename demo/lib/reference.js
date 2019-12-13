@@ -8,11 +8,22 @@ function Reference(path = []) {
   };
 }
 
+const undefinedPath = {}
+
 const findPath = (current, path) => {
-  path.forEach(p => {
-    current = current[p];
-  });
-  return current;
+  try{
+    path.forEach(p => {
+      if(current[p] === undefined){
+        throw undefinedPath
+      }
+      current = current[p];
+    });
+    return current;
+  }
+  catch(e){
+    if(e !== undefinedPath) {throw e}
+    return null
+  }
 };
 
 

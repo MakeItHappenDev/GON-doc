@@ -4,11 +4,12 @@ import parse from '../lib/parse'
 
 import styles from './references.module.scss'
 
+import dataG from '../../demo/graphql/graph'
 
 
 export default () => {
 
-  const string = '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @"foo"."name"@],"ref":@"foo"@, "refList":@"list"@,"fakeRef":{"name":"Arthur"}}'
+  const string = '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @nothing.wrong.path.name@],"ref":@foo@, "refList":@list@,"fakeRef":{"name":"Arthur"}}'
   const parsedString = parse(string)
   const JSONString = JSON.stringify(parsedString)
 
@@ -57,11 +58,11 @@ export default () => {
       <p>
         <a href="https://dev.to/arthurbiensur/kind-of-getting-the-memory-address-of-a-javascript-object-2mnd" target="_blank" rel="noopener noreferrer">Here is a Post about this page</a>
       </p>
-      <p>GON string : </p>
+      <p>GON orinigal string : </p>
       <pre>{`${string}`}</pre>
-      <p>Data :</p>
+      <p>parsed string :</p>
       <pre>{JSONString}</pre>
-      <p>References</p>
+      <p>Referenced object</p>
       <pre>{JSON.stringify(data,null,1)}</pre>
     </main>
   )

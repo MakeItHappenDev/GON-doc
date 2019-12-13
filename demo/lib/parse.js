@@ -112,21 +112,16 @@ function parse(str) {
       i++;
       skipWhitespace();
 
-      const result = [];
-      let initial = true;
+      let string = "";
       while (str[i] !== "@") {
-        if (!initial) {
-          eatDot();
-        }
-        const string = parseString();
-        result.push(string);
-        initial = false;
+        string += str[i]
+        i++
       }
       // move to the next character of ']'
       i++;
 
       //Add to the references array, to be treated before returning data
-      const thisRef = new Reference(result, ["ref"]);
+      const thisRef = new Reference(string.split('.'), ["ref"]);
       return thisRef;
     }
   }
