@@ -7,9 +7,17 @@ import styles from './references.module.scss'
 
 export default () => {
 
-  const string = '{"primitive":"hello","foo":{"name":"Arthur"},"list":["test","hello", @nothing.wrong.path.name@],"ref":@foo@, "refList":@list@,"fakeRef":{"name":"Arthur"}}'
+  const string = `{
+    "primitive":"hello",
+    "foo":{"name":"Arthur","link":@bar@},
+    "bar":{"name":"Arthur2","link":@foo@},
+    "list":["test","hello", @nothing.wrong.path.name@],
+    "ref":@foo@,
+    "refList":@list@,
+    "fakeRef":{"name":"Arthur"}
+  }`
   const parsedString = parse(string)
-  const JSONString = JSON.stringify(parsedString)
+  //const JSONString = JSON.stringify(parsedString)
 
   //Execute the referencification
   const init = setup({
@@ -19,12 +27,13 @@ export default () => {
 
   //Recusive call of findRef over our object
   const reference = (object) => {
+    let deeperRef = []
     if (object instanceof Array) {
       for (let i = 0; i < object.length; i++) {
         //Don't go recursive for primitives
         if (typeof object[i] === "object" && object[i] !== null && !(object[i] instanceof Reference)) {
           //Go deeper
-          reference(object[i])
+          deeperRef.push(object[i])
           object[i] = findRef(object[i])
         }
       }
@@ -32,10 +41,13 @@ export default () => {
       Object.keys(object).forEach(function(key) {
         if (object[key] && typeof object[key] === "object" && !(object[key] instanceof Reference)) {
           //Go deeper
-          reference(object[key])
+          deeperRef.push(object[key])
           object[key] = findRef(object[key])
         }
       });
+    }
+    for(let i=0;i<deeperRef.length;i++){
+      reference(deeperRef[i])
     }
     return object;
   };
@@ -59,7 +71,7 @@ export default () => {
       <p>GON orinigal string : </p>
       <pre>{`${string}`}</pre>
       <p>parsed string :</p>
-      <pre>{JSONString}</pre>
+      <pre>{/*JSONString*/}Circular JSON</pre>
       <p>Referenced object</p>
       <pre>{JSON.stringify(data,null,1)}</pre>
     </main>

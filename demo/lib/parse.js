@@ -47,11 +47,15 @@ const reReference = (object, bank = object) => {
 
 function parse(str) {
   let i = 0;
-  //const references = [];
+  const references = [];
 
   const object = parseValue();
 
   reReference(object);
+  //for(let i = 0;i<references.length;i++){
+  //  references[i] = references[i].getValue(object)
+  //}
+
 
   return object;
 
@@ -122,6 +126,7 @@ function parse(str) {
 
       //Add to the references array, to be treated before returning data
       const thisRef = new Reference(string.split('.'), ["ref"]);
+      references.push(thisRef);
       return thisRef;
     }
   }
