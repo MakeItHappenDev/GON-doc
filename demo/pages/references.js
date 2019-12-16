@@ -11,8 +11,8 @@ export default () => {
   const defaultString = `{
     "primitive":"hello",
     "foo":{"name":"Arthur","link":@bar@},
-    "bar":{"name":"Arthur2","link":@foo@},
-    "list":["test","hello", @nothing.wrong.path.name@],
+    "bar":{"name":"Arthur2"},
+    "list":["test","hello", @wrong.path.name@],
     "ref":@foo@,
     "refList":@list@,
     "fakeRef":{"name":"Arthur"}
@@ -31,7 +31,7 @@ export default () => {
 
   let JSONString
   try{
-    JSONString = JSON.stringify(parsedString)
+    JSONString = JSON.stringify(parsedString, null, 1)
   }
   catch(error){
     JSONString = error.toString()
@@ -39,7 +39,7 @@ export default () => {
 
   //Execute the referencification
   const init = setup({
-    path:["usedReferences"]
+    path:["references"]
     })
   const findRef = init("objects")
 
@@ -47,7 +47,7 @@ export default () => {
   try{
     data = {
       data:createReferences(parsedString,findRef),
-      usedReferences:init("references")
+      references:init("references")
     }
   }
   catch(e){
