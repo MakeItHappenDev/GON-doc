@@ -118,6 +118,9 @@ function parse(str) {
 
       let string = "";
       while (str[i] !== "@") {
+        if(str[i] === undefined){
+          throw new Error('Unfinished reference @'+string)
+        }
         string += str[i]
         i++
       }
@@ -169,6 +172,10 @@ function parse(str) {
       i++;
       let result = "";
       while (str[i] !== '"') {
+        if(str[i] === undefined){
+          throw new Error('Unfinished string "'+result)
+        }
+        
         if (str[i] === "\\") {
           const char = str[i + 1];
           if (

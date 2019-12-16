@@ -51,7 +51,7 @@ export default () => {
     }
   }
   catch(e){
-    data:{error:e.toString()}
+    data={error:e.toString()}
   }
 
 
@@ -66,6 +66,7 @@ export default () => {
       </p>
       <p>GON orinigal string : </p>
       <textarea value={string} onChange={e=>setString(e.target.value)}/>
+      <button onClick={()=>setString(defaultString)}>Reset</button>
       <p>JSON parsed string :</p>
       <pre>{JSONString}</pre>
       <p>Referenced object</p>
