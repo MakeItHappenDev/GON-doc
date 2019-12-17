@@ -162,7 +162,7 @@ function parse(str) {
       }
       // move to the next character of '|'
       i++;
-      return Symbol(string)
+      return Symbol.for(string)
     }
   }
 

@@ -52,7 +52,7 @@ const serialize = (object = {}, replacer= null, space = 0) => {
       case 'number':return `${object}`;
       case 'bigint':return `${object.toString()}n`;
       case 'string':return `"${object}"`;
-      case 'symbol':return `±${object.toString()}±`
+      case 'symbol':return `±${Symbol.keyFor(object)}±`
       default:return typeOf;
     }
 

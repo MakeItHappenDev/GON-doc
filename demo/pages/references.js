@@ -59,7 +59,7 @@ export default () => {
       <button onClick={()=>setString(defaultString)}>Reset</button>
       <p>JSON stringify :</p>
       <pre>{JSONString}</pre>
-      <p>Gon stringify</p>
+      <p>GON stringify</p>
       <pre>{data}</pre>
     </main>
   )

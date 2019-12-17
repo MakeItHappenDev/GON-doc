@@ -66,8 +66,8 @@ futur`,
   leadingDecimalPoint: .8675309, andTrailing: 8675309.,
   bigNumber: 321543123n,
   positiveSign: +1,
-  date: @2019-11-18T19:41:02.095Z@,
-  aReference:$unquoted,
+  date: |2019-11-18T19:41:02.000Z|,
+  aReference:@unquoted@,
   map:#{
       $date$:'The date',
       'bigNumber':'new type'
