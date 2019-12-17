@@ -86,9 +86,6 @@ function parse(str) {
 
       return result;
     }
-    else{
-      return null
-    }
   }
 
   function parseArray() {
@@ -128,9 +125,44 @@ function parse(str) {
       i++;
 
       //Add to the references array, to be treated before returning data
-      const thisRef = new Reference(string.split('.'), ["ref"]);
+      const thisRef = new Reference(string.split('.'));
       references.push(thisRef);
       return thisRef;
+    }
+  }
+  function parseDate(){
+    if(str[i] === '|'){
+      i++;
+      skipWhitespace();
+      let string = ""
+      while(str[i] !== '|'){
+        if(str[i] === undefined){
+          throw new Error('Unfinished date |'+string)
+        }
+        string += str[i]
+        i++
+      }
+      // move to the next character of '|'
+      i++;
+      return new Date(string)
+    }
+  }
+
+  function parseSymbol(){
+    if(str[i] === '±'){
+      i++;
+      skipWhitespace();
+      let string = ""
+      while(str[i] !== '±'){
+        if(str[i] === undefined){
+          throw new Error('Unfinished symbol ±'+string)
+        }
+        string += str[i]
+        i++
+      }
+      // move to the next character of '|'
+      i++;
+      return Symbol(string)
     }
   }
 
@@ -142,6 +174,8 @@ function parse(str) {
       parseObject() ||
       parseArray() ||
       parseReference() ||
+      parseDate() ||
+      parseSymbol() ||
       parseKeyword("true", true) ||
       parseKeyword("false", false) ||
       parseKeyword("null", null);
@@ -248,6 +282,10 @@ function parse(str) {
       while (str[i] >= "0" && str[i] <= "9") {
         i++;
       }
+    }
+    if(str[i] === "n"){
+      i++
+      return BigInt(str.slice(start, i-1))
     }
     if (i > start) {
       return Number(str.slice(start, i));

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import parse from '../lib/parse'
-import stringify from '../lib/stringify'
+import GON from '../lib/index'
 
 import styles from './references.module.scss'
 
@@ -9,6 +8,10 @@ export default () => {
 
   const defaultString = `{
     "primitive":"hello",
+    "date":|2019-12-17T12:00:00.000Z|,
+    "boolean":true,
+    "bigInt":42n,
+    "symbol":±test±,
     "foo":{"name":"Arthur","link":@bar@},
     "bar":{"name":"Arthur2"},
     "list":["test","hello", @wrong.path.name@],
@@ -22,7 +25,7 @@ export default () => {
   //Can fail if malformed
   let parsedString
   try{
-    parsedString = parse(string)
+    parsedString = GON.parse(string)
   }
   catch(e){
     parsedString = {error:e.toString()}
@@ -38,7 +41,7 @@ export default () => {
   }
 
   //should never fail
-  let data = stringify(parsedString)
+  let data = GON.stringify(parsedString,null,1)
 
 
 
@@ -54,9 +57,9 @@ export default () => {
       <p>GON orinigal string : </p>
       <textarea value={string} onChange={e=>setString(e.target.value)}/>
       <button onClick={()=>setString(defaultString)}>Reset</button>
-      <p>JSON parsed string :</p>
+      <p>JSON stringify :</p>
       <pre>{JSONString}</pre>
-      <p>Referenced object</p>
+      <p>Gon stringify</p>
       <pre>{data}</pre>
     </main>
   )

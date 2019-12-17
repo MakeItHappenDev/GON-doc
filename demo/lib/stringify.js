@@ -2,16 +2,32 @@ import setup from './setup'
 import createReferences from '../lib/createReferences'
 import Reference from './reference'
 
-const serializeObject = (object) => {
-  let returnStr = []
-  Object.keys(object).forEach(function(key) {
-    returnStr.push(`"${key}":${serialize(object[key])}`)
-  })
-  return `{${returnStr.join(', ')}}`
+const indentSpaces = (space = 0) => {
+  if(space === -1){return ''}
+  if(space === 0){return '\n'}
+  let indent = ''
+  for(let i = 0;i<space;i++){
+    indent += ' '
+  }
+  return `\n${indent}`
 }
 
-const serializeArray = (array) => {
-  return `[]`
+const serializeObject = (object,replacer,space) => {
+  // TODO replacer
+
+  let returnStr = []
+  Object.keys(object).forEach(function(key) {
+    returnStr.push(`"${key}": ${serialize(object[key],null,space>0?space+space:-1)}`)
+  })
+  return `{${indentSpaces(space)}${returnStr.join(`,${indentSpaces(space)}`)}${indentSpaces(space>0?Math.floor(space/2):-1)}}`
+}
+
+const serializeArray = (array, replacer, space) => {
+  let returnStr = []
+  for(let i=0;i<array.length;i++){
+    returnStr.push(`${serialize(array[i],null,space>0?space+space:-1)}`)
+  }
+  return `[${indentSpaces(space)}${returnStr.join(`,${indentSpaces(space)}`)}${indentSpaces(space>0?Math.floor(space/2):-1)}]`
 }
 
 const serializeReference = (ref) => {
@@ -22,7 +38,9 @@ const serializeDate = (date) => {
   return `|${date.toISOString()}|`
 }
 
-const serialize = (object) => {
+const serialize = (object = {}, replacer= null, space = 0) => {
+  // TODO Replacer not used yet
+
 
   //Looking for primitives/functions
   const typeOf = typeof object
@@ -34,7 +52,7 @@ const serialize = (object) => {
       case 'number':return `${object}`;
       case 'bigint':return `${object.toString()}n`;
       case 'string':return `"${object}"`;
-      case 'symbol':return `#${object.toString()}#`
+      case 'symbol':return `±${object.toString()}±`
       default:return typeOf;
     }
 
@@ -42,11 +60,10 @@ const serialize = (object) => {
   //Flavor of objects
   else{
     if (object === null){
-      console.log(object)
       return 'null'
     }
     else if(object instanceof Array){
-      return serializeArray(object)
+      return serializeArray(object, replacer, Number(space?space:-1))
     }
     else if(object instanceof Reference){
       return serializeReference(object)
@@ -55,13 +72,13 @@ const serialize = (object) => {
       return serializeDate(object)
     }
     else if(object instanceof Object){
-      return serializeObject(object)
+      return serializeObject(object, replacer, Number(space?space:-1))
     }
   }
 }
 
 
-const stringify = (object, target = "references") => {
+const stringify = (object, replacer= null, space = 0, target = "references") => {
 
   const init = setup({
     path:[target]
@@ -81,7 +98,7 @@ const stringify = (object, target = "references") => {
   //return data
 
 
-  return serialize(data)
+  return serialize(data, replacer, space)
 }
 
 export default stringify

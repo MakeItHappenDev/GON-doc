@@ -6,7 +6,7 @@ const reference = (object, findRef) => {
   if (object instanceof Array) {
     for (let i = 0; i < object.length; i++) {
       //Don't go recursive for primitives
-      if (typeof object[i] === "object" && object[i] !== null && !(object[i] instanceof Reference)) {
+      if (typeof object[i] === "object" && object[i] !== null && !(object[i] instanceof Reference) && !(object[i] instanceof Date)) {
         //Go deeper
         deeperRef.push(object[i])
         object[i] = findRef(object[i])
@@ -14,7 +14,7 @@ const reference = (object, findRef) => {
     }
   } else if (object instanceof Object) {
     Object.keys(object).forEach(function(key) {
-      if (object[key] && typeof object[key] === "object" && !(object[key] instanceof Reference)) {
+      if (object[key] && typeof object[key] === "object" && !(object[key] instanceof Reference) && !(object[key] instanceof Date)) {
         //Go deeper
         deeperRef.push(object[key])
         object[key] = findRef(object[key])
