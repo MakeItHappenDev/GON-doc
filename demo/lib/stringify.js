@@ -3,7 +3,11 @@ import createReferences from '../lib/createReferences'
 import Reference from './reference'
 
 const serializeObject = (object) => {
-  return '{}'
+  let returnStr = []
+  Object.keys(object).forEach(function(key) {
+    returnStr.push(`"${key}":${serialize(object[key])}`)
+  })
+  return `{${returnStr.join(', ')}}`
 }
 
 const serializeArray = (array) => {
@@ -22,16 +26,16 @@ const serialize = (object) => {
 
   //Looking for primitives/functions
   const typeOf = typeof object
-  if(typeOf !== "Object"){
+  if(typeOf !== "object"){
     switch (typeOf) {
       case 'function':return 'Function(){}'
       case 'undefined':return 'null';
       case 'boolean':return object?'true':'false';
       case 'number':return `${object}`;
       case 'bigint':return `${object.toString()}n`;
-      case 'string':return `${object};`
+      case 'string':return `"${object}"`;
       case 'symbol':return `#${object.toString()}#`
-      default:return 'null';
+      default:return typeOf;
     }
 
   }
