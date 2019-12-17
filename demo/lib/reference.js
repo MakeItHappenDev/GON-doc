@@ -6,6 +6,9 @@ function Reference(path = []) {
   this.toJSON = () => {
     return `@${this.path.join('.')}@`
   };
+  this.toGON = () => {
+    return `@${this.path.join('.')}@`
+  }
 }
 
 const undefinedPath = {}

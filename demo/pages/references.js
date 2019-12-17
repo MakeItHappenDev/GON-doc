@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import setup from '../lib/references'
+import setup from '../lib/setup'
 import parse from '../lib/parse'
+import stringify from '../lib/stringify'
 import createReferences from '../lib/createReferences'
 
 import styles from './references.module.scss'
@@ -20,6 +21,7 @@ export default () => {
 
   const [string,setString] = useState(defaultString)
 
+  //Can fail if malformed
   let parsedString
   try{
     parsedString = parse(string)
@@ -28,7 +30,7 @@ export default () => {
     parsedString = {error:e.toString()}
   }
 
-
+  //Can fail if circular
   let JSONString
   try{
     JSONString = JSON.stringify(parsedString, null, 1)
@@ -37,22 +39,8 @@ export default () => {
     JSONString = error.toString()
   }
 
-  //Execute the referencification
-  const init = setup({
-    path:["references"]
-    })
-  const findRef = init("objects")
-
-  let data = {}
-  try{
-    data = {
-      data:createReferences(parsedString,findRef),
-      references:init("references")
-    }
-  }
-  catch(e){
-    data:{error:e.toString()}
-  }
+  //should never fail
+  let data = stringify(parsedString)
 
 
   return (
@@ -69,7 +57,7 @@ export default () => {
       <p>JSON parsed string :</p>
       <pre>{JSONString}</pre>
       <p>Referenced object</p>
-      <pre>{JSON.stringify(data,null,1)}</pre>
+      <pre>{data}</pre>
     </main>
   )
 }
