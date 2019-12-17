@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
-import setup from '../lib/setup'
 import parse from '../lib/parse'
 import stringify from '../lib/stringify'
-import createReferences from '../lib/createReferences'
 
 import styles from './references.module.scss'
 
@@ -43,6 +41,7 @@ export default () => {
   let data = stringify(parsedString)
 
 
+
   return (
     <main className={styles.main}>
       <h1>Hello dev.to</h1>
@@ -54,6 +53,7 @@ export default () => {
       </p>
       <p>GON orinigal string : </p>
       <textarea value={string} onChange={e=>setString(e.target.value)}/>
+      <button onClick={()=>setString(defaultString)}>Reset</button>
       <p>JSON parsed string :</p>
       <pre>{JSONString}</pre>
       <p>Referenced object</p>
