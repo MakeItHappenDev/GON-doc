@@ -46,21 +46,21 @@ export default () => {
 
 
   return (
-    <main className={styles.main}>
-      <h1>Hello dev.to</h1>
-      <p>
-        <a href="https://github.com/MakeItHappenDev/GON-doc/blob/master/pages/references.js" target="_blank" rel="noopener noreferrer">Here's the code</a>
-      </p>
-      <p>
-        <a href="https://dev.to/arthurbiensur/kind-of-getting-the-memory-address-of-a-javascript-object-2mnd" target="_blank" rel="noopener noreferrer">Here is a Post about this page</a>
-      </p>
-      <h2>GON orinigal string : <button onClick={()=>setString(defaultString)}>Reset</button></h2>
-      <textarea value={string} onChange={e=>setString(e.target.value)}/>
-      
-      <h2>JSON stringify :</h2>
-      <pre>{JSONString}</pre>
-      <h2>GON stringify</h2>
-      <pre>{data}</pre>
-    </main>
+      <main className={styles.main}>
+        <h1>Graph Object Notation Playground</h1>
+        <p>
+          <a href="https://github.com/MakeItHappenDev/GON-doc/blob/master/pages/references.js" target="_blank" rel="noopener noreferrer">Here's the code</a>
+        </p>
+        <p>
+          <a href="https://dev.to/arthurbiensur/kind-of-getting-the-memory-address-of-a-javascript-object-2mnd" target="_blank" rel="noopener noreferrer">Here is a Post about this page</a>
+        </p>
+        <h2>GON orinigal string : <button onClick={()=>setString(defaultString)}>Reset</button></h2>
+        <textarea value={string} onChange={e=>setString(e.target.value)}/>
+        
+        <h2>JSON stringify :</h2>
+        <pre>{JSONString}</pre>
+        <h2>GON stringify</h2>
+        <pre>{data}</pre>
+      </main>
   )
 }
