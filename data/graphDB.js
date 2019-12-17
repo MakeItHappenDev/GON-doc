@@ -1,4 +1,4 @@
-import parse from '../lib/parse'
+import {parse} from 'graph-object-notation'
 
 const string = `{
   "authorsById":{

@@ -1,0 +1,55 @@
+.main{
+  > pre {
+    background-color:#f0f0f0;
+    padding:1rem;
+    margin:0;
+  }
+  > textarea{
+    display:block;
+    width:100%;
+    min-height:100%;
+    box-sizing: border-box;
+  }
+  > h2{
+    margin:0;
+  }
+  display:grid;
+  grid-template:
+  "header header header" auto
+  "code   ...... post" auto
+  "gon    json   stringify" auto
+  "gonT   jsonT  stringifyT" auto
+  /1fr    1fr    1fr;
+  grid-gap:1rem;
+  > h1 {
+    grid-area: header;
+  }
+  > p:first-child{
+    grid-area: code;
+  }
+  > p:nth-child(2){
+    grid-area: post
+  }
+  > h2 {
+    &:first-of-type{
+      grid-area:gon
+    }
+    &:nth-of-type(2){
+      grid-area:json
+    }
+    &:nth-of-type(3){
+      grid-area:stringify
+    }
+  }
+  > pre{
+    &:first-of-type{
+      grid-area:jsonT
+    }
+    &:nth-of-type(2){
+      grid-area:stringifyT
+    }
+  }
+  > textarea{
+    grid-area: gonT;
+  }
+}
