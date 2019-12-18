@@ -1,0 +1,23 @@
+.container{
+  > header {
+    grid-area: header;
+  }
+  > footer {
+    grid-area: footer;
+  }
+  >main {
+    grid-area: main;
+    background-color:var(--block);
+    padding:1rem;
+  }
+
+  display:grid;
+  grid-template: 
+  "header header header" auto
+  "...... main   ......" auto
+  "...... ....... ....." 1fr
+  "footer footer footer" auto
+  /1fr    var(--bigScreenWidth)  1fr;
+  min-height:100%;
+  grid-gap:0.5rem;
+}
