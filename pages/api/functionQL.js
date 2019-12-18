@@ -14,14 +14,10 @@ export default async (_, res) => {
     author{
       id
       name
-    }  
-  }
-  authors{
-    id
-    name
-    tweets{
-      id
-      text
+      tweets{
+        id
+        text
+      }
     }
   }
 }`;

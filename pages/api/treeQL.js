@@ -14,15 +14,11 @@ export default async (_, res) => {
     author{
       id
       name
+      tweets{
+        id
+        text
+      }
     }  
-  }
-  authors{
-    id
-    name
-    tweets{
-      id
-      text
-    }
   }
 }`;
   const response = await graphql(buildedSchema, query, resolvers);

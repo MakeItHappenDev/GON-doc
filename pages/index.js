@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import GON from 'graph-object-notation'
 
 import '../styles/general.scss'
 import styles from './index.module.scss'
@@ -15,7 +16,13 @@ const Home = () => {
     (async function loadAPI(endpoint){
       setJson('loading ...')
       const response = await axios.get(`/api/${endpoint}`)
-      setJson(JSON.stringify(response.data,null,1))
+      if(endpoint === "currentQL"){
+        const graph = GON.parse(response.data).data
+        setJson(GON.stringify(graph,null,1))
+      }
+      else{
+        setJson(JSON.stringify(response.data,null,1))
+      }
     })(endpoint)
   },[endpoint])
 
@@ -28,7 +35,6 @@ const Home = () => {
        <p className={endpoint==="treeQL"?styles.selected:null} onClick={()=>setEndpoint('treeQL')}>treeQL</p>
        <p className={endpoint==="circularQL"?styles.selected:null} onClick={()=>setEndpoint('circularQL')}>circularQL</p>
        <p className={endpoint==="currentQL"?styles.selected:null} onClick={()=>setEndpoint('currentQL')}>currentQL</p>
-       <p className={endpoint==="goalQL"?styles.selected:null} onClick={()=>setEndpoint('goalQL')}>goalQL</p>
      </nav>
      <pre>
        {json}

@@ -1,9 +1,10 @@
 import data from '../../graphql/graph'
-import GON from '../../graphql/gon'
+//import GON from '../../graphql/gon'
+import GON from 'graph-object-notation'
 
 export default async (req, res) => {
 
-  const json = GON.serialize(data)
+  const gon  = GON.stringify(data)
 
-  return res.json(json);
+  return res.end(gon, null, 1);
 };

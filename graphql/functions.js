@@ -11,8 +11,8 @@ const populateTweet = tweet => {
     }
 }
 
-const getTweetsByIds = ids => {
-    return tweets.filter(t => ids.includes(t.id)).map(populateTweet)
+const getTweetsByAuthor = id => {
+    return tweets.filter(t => t.author === id).map(populateTweet)
 }
 
 const fetchAllTweets = () => {
@@ -26,12 +26,12 @@ const populateAuthor = author => {
     return {
         id:author.id,
         name:author.name,
-        tweets:getTweetsByIds.bind(this, author.tweets || [])
+        tweets:getTweetsByAuthor.bind(this, author.id || [])
     }
 }
 
 const getAuthorById = id => {
-    return populateAuthor(authors.find(a => a.id === id))
+   return populateAuthor(authors.find(a => a.id === id))
 }
 
 const fetchAllAuthors = () => {
