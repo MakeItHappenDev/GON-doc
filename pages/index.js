@@ -29,8 +29,8 @@ console.log(JSON.stringify(graph))
 
 console.log(GON.stringify(graph))
 // Returns {
-  "data":{"foo":@references.0xf001@,"ref":@references.0xf001@},
-  "references":{"0xf001":{"name":"bar"}}
+  "data": { "foo":@references.0xf001@, "ref":@references.0xf001@ },
+  "references": { "0xf001": { "name":"bar" } }
 }`}
         </code>
       </pre>
@@ -38,10 +38,10 @@ console.log(GON.stringify(graph))
       <p>GON is a superset of JSON, everything JSON should work using GON.parse In addition to JSON, GON offers a few more serialization options:</p>
       <pre>
         <code>{`{
-  "date":|2019-12-17T12:00:00.000Z|,
-  "bigInt":42n,
-  "Symbol":±debug±,
-  "Reference":@bigInt@
+  "date": |2019-12-17T12:00:00.000Z|,
+  "bigInt": 42n,
+  "Symbol": ±debug±,
+  "Reference": @bigInt@
 }`}
         </code>
       </pre>
@@ -49,11 +49,11 @@ console.log(GON.stringify(graph))
       <h1>Import options</h1>
       <p>You can import the whole suite with <code>import GON from 'graph-object-notation`` or just the part you need with </code>{`import {parse,stringify} from 'graph-object-notation'`}</p>
 
-      <h1>GON.parse(stringToBeParsed)</h1>
+      <h1>GON.parse(<wbr/>stringToBeParsed<wbr/>)</h1>
       <p>Parse <strong>stringToBeParsed</strong> in the GON format, resolve references and provide a JS object that can be a graph</p>
-      <h1>GON.stringify(objectToSerialize, replacer, spaces, target)</h1>
+      <h1>GON.stringify( objectToSerialize, replacer, spaces, target )</h1>
       <p className="error">/!\ Stringify mutate the <strong>objectToSerialize</strong> , this is a know bug and will be resolved later on</p>
-      <p className="error">/!\ Stringify return a serialized version of your string on the form {`{"data":{...yourObject/array}, <strong>target</strong>:{...}}`}, if you want to stringify and parse in succession, you'll need to <code>{`GON.parse(GON.stringify({test:"hello"}).data`}</code> to get the expected result</p>
+      <p className="error">/!\ Stringify return a serialized version of your string on the form {`{"data":{...yourObject/array}, target:{...}}`}, if you want to stringify and parse in succession, you'll need to <code>{`GON.parse( GON.stringify( {test:"hello"} ).data`}</code> to get the expected result</p>
       <p>Serialize <strong>objectToSerialize</strong> to the GON format. default is <code>{}</code></p>
       <p><strong>replacer</strong> is not yet implemented and will work like the <strong>replacer</strong> from JSON.stringify. default is <code>null</code></p>
       <p><strong>space</strong> is used to make the serialized string more readable for human, works like <strong>space</strong> from JSON.stringify, default is <code>0</code></p>

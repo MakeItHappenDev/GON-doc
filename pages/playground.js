@@ -51,6 +51,7 @@ export default () => {
         <pre>{stringifiedJson}</pre>
         <h1>GON stringified object</h1>
         <pre>{stringifiedGon}</pre>
+        <p>Feel free to play and try to break the GON parse, if you see something that doesn't feel quite right, <a href="https://github.com/MakeItHappenDev/Graph-Object-Notation/issues" rel="noopener noreferrer" target="_blank">reach out in the issues</a></p>
       </article>
     </Centered>
   )

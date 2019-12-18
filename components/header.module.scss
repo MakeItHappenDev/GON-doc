@@ -1,5 +1,5 @@
 .header{
-  background-color:var(--accent);
+  background-color:var(--darkbg);
   padding:1rem;
   display:grid;
   grid-template: 
@@ -14,6 +14,19 @@
     > a {
       display:inline-block;
       margin-left:1rem;
+    }
+  }
+  @media screen and (min-width:1534px){ 
+    grid-template: 
+    "logo" auto
+    "nav" auto
+    ".." 1fr
+    /1fr;
+    grid-gap:1rem;
+    > nav > a {
+      display:block;
+      margin-left: 0;
+      margin-bottom:0.5rem;
     }
   }
 }
