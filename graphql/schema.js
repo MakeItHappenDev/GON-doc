@@ -1,5 +1,4 @@
-module.exports = `
-type Tweet {
+module.exports = `type Tweet {
   id:ID!
   text:String!
   author:Author!
@@ -8,11 +7,10 @@ type Tweet {
 type Author {
   id:ID!
   name:String!
+  hello:String
   tweets:[Tweet!]!
 }
 
-type Query {
-    tweets:[Tweet!]!
-    authors:[Author!]!
-}
-`
+type Query{
+  tweets:[Tweet!]!
+}`

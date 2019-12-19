@@ -1,7 +1,7 @@
 import { graphql, buildSchema } from 'graphql'
 
 import schema from '../../graphql/schema'
-import resolver from '../../graphql/resolverGon'
+import resolver from '../../graphql/resolver'
 
 const buildedSchema = buildSchema(schema)
 const query = `{
@@ -9,12 +9,15 @@ const query = `{
     id
     text
     author{
-      id
       name
-      hello
+      id
       tweets{
-        id
         text
+        id
+        author{
+          name
+          id
+        }
       }
     }
   }

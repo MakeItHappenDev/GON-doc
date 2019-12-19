@@ -1,22 +1,4 @@
 [
-    {"id":1,"text":"lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere","author":1},
-    {"id":2,"text":"nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy","author":2},
-    {"id":3,"text":"donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et","author":4},
-    {"id":4,"text":"egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus","author":5},
-    {"id":5,"text":"ut ultrices vel augue vestibulum ante ipsum primis in faucibus","author":6},
-    {"id":6,"text":"tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi","author":3},
-    {"id":7,"text":"ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere","author":7},
-    {"id":8,"text":"ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna","author":8},
-    {"id":9,"text":"congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue","author":9},
-    {"id":10,"text":"rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean","author":10},
-    {"id":11,"text":"velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra","author":1},
-    {"id":12,"text":"elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac","author":2},
-    {"id":13,"text":"odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus","author":4},
-    {"id":14,"text":"magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu","author":5},
-    {"id":15,"text":"in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum","author":6},
-    {"id":16,"text":"in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl","author":3},
-    {"id":17,"text":"vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros","author":7},
-    {"id":18,"text":"sed nisl nunc rhoncus dui vel sem sed sagittis nam congue","author":9},
-    {"id":19,"text":"in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra","author":8},
-    {"id":20,"text":"molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus","author":10}
+    {"id":1,"text":"foo bar","author":1},
+    {"id":2,"text":"hello world","author":1}
 ]
