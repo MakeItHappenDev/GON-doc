@@ -7,7 +7,8 @@ export default () => {
   return(
     <footer className={styles.footer}>
       <nav>
-        <Link href="/contributors"><a>contributors</a></Link>
+       <a href="https://github.com/MakeItHappenDev/Graph-Object-Notation/graphs/contributors" target="_blank" rel="noopener noreferrer">Contributors</a>
+        
       </nav>
     </footer>
   )
