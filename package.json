@@ -18,7 +18,7 @@
     "graph-object-notation": "^0.1.6",
     "graphql": "^14.5.8",
     "next": "^9.1.6",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   }
