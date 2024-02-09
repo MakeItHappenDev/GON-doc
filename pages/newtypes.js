@@ -7,28 +7,18 @@ import styles from './playground.module.scss'
 export default () => {
 
   const defaultGONString = `{
-  "data": {
-    "queries":{
-      "currentUser":@references.user.id1@,
-      "users": [@references.user.id1@, @references.user.id2@],
-      "events":[@references.event.id1@]
-    }
-  },
-  "references":{
-    "user":{
-      "id1":{"name":"Alice", "id": "id1", "__typename": "user"},
-      "id2":{"name":"Bob", "id": "id2", "__typename": "user"},
-      "id3":{"name":"Charlie", "id": "id3", "__typename": "user"}
-    },
-    "event": {
-       "id1":{
-         "__typename": "event",
-         "name": "My first event", 
-         "userList":[@references.user.id1@, @references.user.id3@]
-      }
-    }
-  }
+    "primitive":"hello world",
+    "date":|2019-12-18T12:00:00.000Z|,
+    "bigInt":42n,
+    "symbol":±test±,
+    "foo":{"name":"Arthur"},
+    "bar":{"name":"Arthur2", "link":@foo@},
+    "list":["test",@foo@,@bar@,@wrong.path@],
+    "reference":@foo@,
+    "refList":@list@,
+    "fakeRef":{"name":"Arthur"}
 }`
+
   const [string,setString] = useState(defaultGONString)
 
   let parsedGon
